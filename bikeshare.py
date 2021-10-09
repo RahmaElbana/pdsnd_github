@@ -1,10 +1,11 @@
 import time
 import pandas as pd
 import numpy as np
-#this is bikeshare project
-CITY_DATA = { 'chicago': 'chicago.csv',
-              'new york city': 'new_york_city.csv',
-              'washington': 'washington.csv' }
+
+CITY_DATA = {'chicago': 'chicago.csv',
+             'new york city': 'new_york_city.csv',
+             'washington': 'washington.csv'}
+
 
 def get_filters():
     """
@@ -15,43 +16,46 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
+    # this is my bikshare project
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     while True:
-        city=input("Enter name of the city:chicago, new york, washington" ).lower()
+        city = input(
+            "Enter name of the city:chicago, new york, washington").lower()
         if city not in CITY_DATA:
             print("Please type a valid answer")
-            continue   
+            continue
         else:
-            break  
-            
-         
+            break
 
     # TO DO: get user input for month (all, january, february, ... , june)
     # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
     while True:
-        time = input("Choose your filter: month, day, all or none?").lower()               
+        time = input("Choose your filter: month, day, all or none?").lower()
         if time == 'month':
-            month = input("choose month: January, Feburary, March, April, May or June?").lower()
+            month = input(
+                "choose month: January, Feburary, March, April, May or June?").lower()
             day = 'all'
             break
-                    
+
         elif time == 'day':
             month = 'all'
-            day = input("choose day: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday or Sunday").lower()
+            day = input(
+                "choose day: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday or Sunday").lower()
             break
-                    
+
         elif time == 'all':
-            month = input("choose month: January, Feburary, March, April, May or June?").lower()           
-            day = input("choose day: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday or Sunday").lower()
-            break       
+            month = input(
+                "choose month: January, Feburary, March, April, May or June?").lower()
+            day = input(
+                "choose day: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday or Sunday").lower()
+            break
         elif time == 'none':
             month = 'all'
             day = 'all'
-            break       
+            break
         else:
             input("Invalid Input Please type a correct one. month, day, all or none?")
             break
-
 
     print(city)
     print(month)
@@ -76,9 +80,9 @@ def load_data(city, month, day):
     df['day_of_week'] = df['Start Time'].dt.day_name()
     if month != 'all':
         months = ['january', 'february', 'march', 'april', 'may', 'june']
-        month = months.index(month) +1
+        month = months.index(month) + 1
         df = df[df['month'] == month]
-    
+
     if day != 'all':
         df = df[df['day_of_week'] == day.title()]
     return df
@@ -91,13 +95,13 @@ def time_stats(df):
     start_time = time.time()
 
     # TO DO: display the most common month
-    common_month=df['month'].mode()[0]
+    common_month = df['month'].mode()[0]
     print(common_month)
     # TO DO: display the most common day of week
-    common_day=df['day_of_week'].mode()[0]
+    common_day = df['day_of_week'].mode()[0]
     print(common_day)
     # TO DO: display the most common start hour
-    common_start_hour=df['Start Time'].mode()[0]
+    common_start_hour = df['Start Time'].mode()[0]
     print(common_start_hour)
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -114,7 +118,7 @@ def station_stats(df):
     print(common_start_station)
 
     # TO DO: display most commonly used end station
-    common_end_station= df['End Station'].mode()[0]
+    common_end_station = df['End Station'].mode()[0]
     print(common_end_station)
     # TO DO: display most frequent combination of start station and end station trip
     df['combination'] = df['Start Station'] + ' to ' + df['End Station']
@@ -132,10 +136,10 @@ def trip_duration_stats(df):
     start_time = time.time()
 
     # TO DO: display total travel time
-    total_travel_time= df['Trip Duration'].sum()
+    total_travel_time = df['Trip Duration'].sum()
     print(total_travel_time)
     # TO DO: display mean travel time
-    mean_travel_time= df['Trip Duration'].mean()
+    mean_travel_time = df['Trip Duration'].mean()
     print(mean_travel_time)
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -169,7 +173,8 @@ def user_stats(df):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-    
+
+
 def data(df):
     raw_data = 0
     while True:
@@ -178,12 +183,13 @@ def data(df):
             answer = input("Invalid...please enter Y or N.").lower()
         elif answer == 'y':
             raw_data += 5
-            print(df.iloc[raw_data : raw_data + 5])
+            print(df.iloc[raw_data: raw_data + 5])
             again = input("Do you want to see more? Y or N").lower()
             if again == 'n':
                 break
         elif answer == 'n':
             return
+
 
 def main():
     city = ""
@@ -205,4 +211,4 @@ def main():
 
 
 if __name__ == "__main__":
-	main()
+    main()

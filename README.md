@@ -1,5 +1,3 @@
->**Note**: Please **fork** the current Udacity repository so that you will have a **remote** repository in **your** Github account. Clone the remote repository to your local machine. Later, as a part of the project "Post your Work on Github", you will push your proposed changes to the remote repository in your Github account.
-
 ### Date created
 ‎Saturday, ‎October ‎9, ‎2021, ‏‎3:19:52 PM
 
@@ -7,10 +5,14 @@
 bikeshare project2
 
 ### Description
-Describe what your project is about and what it does
+in bikeshare project i am explore information about bicycle-sharing systems have been growing in number and popularity in cities(chicago ,new york ,washington) ,analysis this information and show statistics results on it.
 
 ### Files used
-Include the files used
+-visual studio code , python three ,pandas
+-bikeshare.py,washington.csv
+chicago.csv
+new_york_city.csv
+ 
 
 ### Credits
 It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
